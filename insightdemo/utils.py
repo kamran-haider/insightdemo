@@ -135,6 +135,8 @@ def plot_roc_curve(fpr_list, tpr_list, name="test", labels=None):
     plt.ylabel("TPR")
     plt.savefig(name + "_roc.png")
 
+
+
 # from: http://collectivesolver.com/5780/how-to-format-bytes-to-kilobytes-megabytes-gigabytes-and-terabytes-in-python
 def format_bytes(bytes_num):
     sizes = ["B", "KB", "MB", "GB", "TB"]
