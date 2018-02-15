@@ -1,7 +1,7 @@
 insightdemo
 ===========
 
-## Water displacement in structure-guided drug design - introductory data exploration and analysis**
+## Water displacement in structure-guided drug design - introductory data exploration and analysis
 
 ### Part 1 
 Part 1 of this demonstration covers visualization of protein structures and molecular dynamics trajectories in a Jupyter notebook. 
