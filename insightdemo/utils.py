@@ -40,7 +40,27 @@ def mathy_header(data):
     """
     Turns column names into markdown latex syntax for nice column header rendering.
     """
-    pass
+    for col in data.columns[:-3]:
+        if "{" in col or "}" in col:
+            pass
+        elif "_" in col and "^" in col:
+            superscript_loc = col.index("^") + 1
+            subscript_loc = col.index("_")
+            updated_name = "$" + col[0:superscript_loc] + "{" + col[superscript_loc:subscript_loc] + "}" + "_{" + col[subscript_loc + 1:] + "}" + "$"
+            data.rename(columns={col: updated_name}, inplace=True)
+        elif "_" in col:
+            subscript_loc = col.index("_") + 1
+            updated_name = "$" + col[0:subscript_loc] + "{" + col[subscript_loc:] + "}" + "$"
+            data.rename(columns={col: updated_name}, inplace=True)
+        else:
+            if "^" in col:
+                superscript_loc = col.index("^") + 1
+                updated_name = "$" + col[0:superscript_loc] + "{" + col[superscript_loc:] + "}" + "$"
+                data.rename(columns={col: updated_name}, inplace=True)
+            else:
+                updated_name = col
+
+
 
 def plot_learning_curve(estimator, title, X, y, acceptable_score=None, ylim=None, cv=None,
                         train_sizes=np.linspace(0.1, 1.0, 10)):
@@ -102,7 +122,7 @@ def plot_learning_curve(estimator, title, X, y, acceptable_score=None, ylim=None
     if ylim:
         plt.ylim(ylim)
     plt.title(title)
-    plt.savefig(title + "_learning_curve.png")
+    #plt.savefig(title + "_learning_curve.png")
 
 def plot_roc_curve(fpr_list, tpr_list, name="test", labels=None):
     plt.figure()
@@ -115,3 +135,16 @@ def plot_roc_curve(fpr_list, tpr_list, name="test", labels=None):
     plt.ylabel("TPR")
     plt.savefig(name + "_roc.png")
 
+# from: http://collectivesolver.com/5780/how-to-format-bytes-to-kilobytes-megabytes-gigabytes-and-terabytes-in-python
+def format_bytes(bytes_num):
+    sizes = ["B", "KB", "MB", "GB", "TB"]
+
+    i = 0
+    dblbyte = bytes_num
+
+    while (i < len(sizes) and bytes_num >= 1024):
+        dblbyte = bytes_num / 1024.0
+        i = i + 1
+        bytes_num = bytes_num / 1024
+
+    return str(round(dblbyte, 2)) + " " + sizes[i]

@@ -4,3 +4,8 @@ dependencies:
   - matplotlib
   - nglview
   - jupyter
+  - scikit-learn
+  - mdtraj
+  - xlrd
+  - keras
+  - tensorflow
