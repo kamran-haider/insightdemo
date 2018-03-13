@@ -3,8 +3,8 @@ A simple demo of using SSTMap's output for machine learning water displacement
 
 In order to explore this demonstration independently, please download or clone the repository:
 ```bash
-git clone git@github.com:kamran-haider/insightdemo.git
-cd insightdemo
+git clone git@github.com:kamran-haider/water-ml-demo.git
+cd water-ml-demo
 ```
 run the following commands:
 
