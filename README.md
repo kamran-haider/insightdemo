@@ -1,4 +1,4 @@
-insightdemo
+A simple demo of using SSTMap's output for machine learning water displacement
 ===========
 
 In order to explore this demonstration independently, please download or clone the repository:
